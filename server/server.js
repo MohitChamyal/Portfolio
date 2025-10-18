@@ -9,7 +9,7 @@ const app = express();
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://portfolioclient-snowy.vercel.app/',
+    'https://portfolioclient-snowy.vercel.app',
   ],
   credentials: true,
 }));
