@@ -5,14 +5,22 @@ require('dotenv').config();
 
 const app = express();
 
-// For production CORS: set your frontend deploy URL here!
-app.use(cors({
+// CORS configuration - MUST be before routes
+const corsOptions = {
   origin: [
     'http://localhost:5173',
-    'https://portfolioclient-snowy.vercel.app',
+    'https://portfolioclient-snowy.vercel.app', // Your exact frontend URL
   ],
   credentials: true,
-}));
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
+
+// Explicitly handle OPTIONS preflight for all routes
+app.options('*', cors(corsOptions));
+
 app.use(express.json());
 
 app.post('/api/contact', async (req, res) => {
