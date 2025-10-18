@@ -9,7 +9,7 @@ const app = express();
 const corsOptions = {
   origin: [
     'http://localhost:5173',
-    'https://mohitchamyal.vercel.app', // Your exact frontend URL
+    'https://mohitchamyal.vercel.app', // ← Update to your new domain
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -18,8 +18,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// Explicitly handle OPTIONS preflight for all routes
-app.options('*', cors(corsOptions));
+app.options('*', cors(corsOptions)); // Handle preflight
 
 app.use(express.json());
 
