@@ -62,7 +62,7 @@ function App() {
       textColor: "#fff",
       links: [
         { label: "Email", ariaLabel: "Email us", onClick: () => scrollToSection('contact') },
-        { label: "Instagram", ariaLabel: "Instagram", href: "https://www.instagram.com/25103mohit_chamyal/", external: true },
+        { label: "X", ariaLabel: "X", href: "https://x.com/MOHITCHAMYAL58", external: true },
         { label: "LinkedIn", ariaLabel: "LinkedIn", href: "https://www.linkedin.com/in/mohit-chamyal-57254724b/", external: true }
       ]
     }
@@ -70,7 +70,7 @@ function App() {
 
   return (
     <>
-      <Header 
+      <Header
         items={[
           {
             label: "About",
@@ -90,9 +90,9 @@ function App() {
             textColor: "#fff",
             links: items[2].links
           }
-        ]} 
-        baseColor={theme === 'dark' ? 'hsl(var(--background))' : '#fff'} 
-        menuColor={theme === 'dark' ? '#fff' : '#000'} 
+        ]}
+        baseColor={theme === 'dark' ? 'hsl(var(--background))' : '#fff'}
+        menuColor={theme === 'dark' ? '#fff' : '#000'}
         theme={theme}
         onThemeToggle={toggleTheme}
       />
