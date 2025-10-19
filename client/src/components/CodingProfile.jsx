@@ -13,7 +13,8 @@ const codingProfiles = [
       problemsSolved: "500+",
       highlights: [
         "Top 5% in LeetCode Weekly Contest",
-        "300+ Medium/Hard problems solved"
+        "300+ Medium/Hard problems solved",
+        "Knight Badge Holder"
       ]
     },
     color: "#FFA116"
@@ -24,9 +25,11 @@ const codingProfiles = [
     url: "https://codeforces.com/profile/mohitchamyal58",
     icon: <SiCodeforces />,
     stats: {
-      rating: "Pupil (1200+)",
-      contests: "10+ participated",
+      rating: "1253 Max Rating (Contest)",
+      contests: "10+ Contest participated",
       highlights: [
+        "150+ Problems solved",
+        "Pupil Rank Achieved"
       ]
     },
     color: "#1F8ACB"
