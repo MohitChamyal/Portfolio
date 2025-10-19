@@ -149,7 +149,7 @@ const Hero = () => {
                   <FaLinkedin />
                 </a>
                 <a 
-                  href="https://twitter.com/yourusername" 
+                  href="https://x.com/MOHITCHAMYAL58" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="social-link twitter"
