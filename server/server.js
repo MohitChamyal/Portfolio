@@ -10,9 +10,11 @@ app.use(cors({
   origin: [
     'http://localhost:5173',
     'https://mohitchamyal-portfolio.vercel.app',
+    'https://mohitchamyal-portfolio-1qxmkughu-mohitchamyals-projects.vercel.app', // <-- add this!
   ],
   credentials: true,
 }));
+
 app.use(express.json());
 
 app.post('/api/contact', async (req, res) => {
