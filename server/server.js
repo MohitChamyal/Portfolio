@@ -5,30 +5,23 @@ require('dotenv').config();
 
 const app = express();
 
-const corsOptions = {
+// For production CORS: set your frontend deploy URL here!
+app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://mohitchamyal-portfolio.vercel.app'
+    'https://your-frontend-domain.vercel.app',
   ],
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-};
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+}));
 app.use(express.json());
-
-app.get('/', (req, res) => {
-  res.send('Server is running!');
-});
-
-app.get('/favicon.ico', (req, res) => res.status(204)); // Optional
 
 app.post('/api/contact', async (req, res) => {
   const { name, email, message } = req.body;
+
   if (!name || !email || !message) {
     return res.status(400).json({ success: false, error: "Missing required fields." });
   }
+
   try {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -37,6 +30,7 @@ app.post('/api/contact', async (req, res) => {
         pass: process.env.GMAIL_PASS,
       }
     });
+
     const mailOptions = {
       from: `"${name}" <${email}>`,
       to: process.env.RECEIVER_EMAIL,
@@ -49,6 +43,7 @@ app.post('/api/contact', async (req, res) => {
         <p><strong>Message:</strong><br>${message}</p>
       `
     };
+
     await transporter.sendMail(mailOptions);
     res.json({ success: true, message: "Message sent successfully!" });
   } catch (err) {
@@ -57,8 +52,9 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-// Remove app.listen! Use module.exports for Vercel
-// const PORT = process.env.PORT || 5000;
-// app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.get('/', (req, res) => {
+  res.send('Server is running!');
+});
 
-module.exports = app;
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
